@@ -1,14 +1,9 @@
 <?php
-    //connecting to the database
-    $conn = mysqli_connect('localhost', 'root', 'password', 'mpesa_opt');
-
-    //check connection
-    if(!$conn){
-        echo 'Connection error: ' . mysqli_connect_error();
-    }
+   include('config/db_connect.php');
 
     //query for the data table mpesa
-    $sql = 'SELECT code,phone_number, id FROM mpesa ORDER BY link';
+    $sql = 'SELECT code,phone_number, id, link FROM mpesa ORDER BY link';
+    // $link = mysql_real_escape_string(urlencode($_POST['link']) );
 
     //query and get the data results
     $result = mysqli_query($conn, $sql);
@@ -37,7 +32,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <?php include('templates/header.php'); ?>
 
-    <h4 class="center">Mpesa_opt_confirmation</h4>
+    <h4 style="text-align:center">Mpesa_opt_confirmation</h4>
     <div class="container">
         <div class="row">
 
@@ -45,8 +40,12 @@
         <div class="col s6 md3">
             <div class="card z-depth-0">
                 <div class="card-content center">
+                   <b>Phone Number:
                     <h6><?php echo htmlspecialchars($mpesas['phone_number']); ?></h6>
-                    <div><?php echo htmlspecialchars($mpesas['code']); ?></div>  
+                    <b>Code:
+                    <h6><?php echo htmlspecialchars($mpesas['code']); ?></h6>  
+                    <b>Link:
+                    <h6><?php echo htmlspecialchars($mpesas['link']); ?></h6>
        
         </div>
 
