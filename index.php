@@ -1,6 +1,6 @@
 <?php
    include('config/db_connect.php');
-
+   
     //query for the data table mpesa
     $sql = 'SELECT code,phone_number, id, link FROM mpesa ORDER BY link';
     // $link = mysql_real_escape_string(urlencode($_POST['link']) );
